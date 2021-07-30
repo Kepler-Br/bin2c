@@ -39,10 +39,10 @@ def to_escaped_string(content: bytes, quote_string: str, escape_quote: bool) -> 
 
     for i in range(len(content)):
         char = chr(content[i])
-        if chr(content[i]).isascii() and chr(content[i]).isprintable():
-            result[i] = char
-        elif char in escape_shortcut_table:
+        if char in escape_shortcut_table:
             result[i] = escape_shortcut_table[char]
+        elif chr(content[i]).isascii() and chr(content[i]).isprintable():
+            result[i] = char
         else:
             result[i] = '\\{:03o}'.format(content[i])
         if escape_quote and result[i] == quote_string:
@@ -78,7 +78,8 @@ def main():
             for escaped_char in escaped_string:
                 if symbols_wrote_in_line + len(escaped_char) + service_symbols_length > args.max_symbols:
                     padding_count = args.max_symbols - symbols_wrote_in_line - service_symbols_length
-                    print(f'{args.quote_string}{" " * padding_count}{args.glue_string}{args.linebreak_string}',
+                    padding = " " * padding_count
+                    print(f'{args.quote_string}{padding}{args.glue_string}{args.linebreak_string}',
                           file=output_file, end='')
                     symbols_wrote_in_line = 0
                 if symbols_wrote_in_line == 0:

@@ -111,6 +111,8 @@ def main():
             elements_wrote += len(hex_strings)
             if args.write_comments:
                 printable_strings = to_printable_string(chunk)
+                if printable_strings.endswith('\\'):
+                    printable_strings = replace_char_by_index(printable_strings, '.', len(printable_strings) - 1)
                 padding = ''
                 if len(hex_strings) < max_elements_per_line:
                     padding_count = (max_elements_per_line - len(hex_strings)) * element_length

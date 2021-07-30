@@ -2,7 +2,7 @@
 
 Convert any binary file or stdin into c style array with this script.  
 Inspired by  [James Swineson's](https://github.com/Jamesits) [repository](https://github.com/Jamesits/bin2array) but turned out to be completely rewritten.  
-**Warning:** this script will implicitly change trailing `/\` at the end of comment block to `.` so C preprocessor would not escape new line.  
+**Warning:** this script will implicitly change trailing `\` at the end of comment block to `.` so C preprocessor would not escape new line.  
 
 ## What you'll need
 
