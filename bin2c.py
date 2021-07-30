@@ -117,10 +117,11 @@ def main():
                     padding = ' ' * padding_count
                 print(f'{padding}{args.comment_string}{printable_strings}', file=output_file, end='')
             print(file=output_file, end=args.linebreak_string)
+        output_file.flush()
     except BrokenPipeError:
         pass
     if args.size:
-        print(f"Elements wrote: {elements_wrote}", file=sys.stderr)
+        print(f"\nElements wrote: {elements_wrote}", file=sys.stderr)
     if output_file != sys.stdout:
         output_file.close()
     if input_file != sys.stdin:
