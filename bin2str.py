@@ -64,7 +64,7 @@ def main():
 
     try:
         if args.output:
-            output_file = open(args.output, 'wb')
+            output_file = open(args.output, 'w')
     except OSError as e:
         print(f'Cannot open file \'{args.output}\': {e.strerror}', file=sys.stderr)
         exit(-1)
